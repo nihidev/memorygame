@@ -159,12 +159,12 @@ class MemoryGame extends React.Component {
         console.log("2 star")
         newStarRating = 2;
       }
-      else 
+      else
       {
         console.log("1 star")
         newStarRating = 1;
       }
-      
+
     }
     else if ((newMoves > 6 && newMoves < 8)){
       if((newTimer > 0 && newTimer < 35))
@@ -182,7 +182,7 @@ class MemoryGame extends React.Component {
         console.log("2 star")
         newStarRating = 2;
       }
-      else 
+      else
       {
         console.log("1 star")
         newStarRating = 1;
@@ -199,7 +199,7 @@ class MemoryGame extends React.Component {
         console.log("2 star")
         newStarRating = 2;
       }
-      else 
+      else
       {
         console.log("1 star")
         newStarRating = 1;
@@ -211,7 +211,7 @@ class MemoryGame extends React.Component {
         console.log("2 star")
         newStarRating = 2;
       }
-      else 
+      else
       {
         console.log("1 star")
         newStarRating = 1;
@@ -220,7 +220,7 @@ class MemoryGame extends React.Component {
     else if(newMoves > 12){
        newStarRating = 1;
      }
-    
+
     clickedCard.faceDown = false;
 
     // console.log(
@@ -339,9 +339,6 @@ class MemoryGame extends React.Component {
     this.setState({screenHeight: window.innerHeight})
   }
 
-  
-  
-
   render() {
     return(
       <Container maxWidth="lg">
@@ -393,11 +390,11 @@ function MemoryCard(props) {
                   color= {props.card.color}
                   className="memoryImg"
                   question = {props.card.isQuestion}
-                  text={props.card.faceDown ? 
-                  <CardMedia 
+                  text={props.card.faceDown ?
+                  <CardMedia
                   image={bgImg}
-                  className="memoryImg"         
-                    /> 
+                  className="memoryImg"
+                    />
                   : props.card.text}
                   handleClick={props.card.solved || !props.card.faceDown ? null : () => props.onClick(props.card.id)}
               />
