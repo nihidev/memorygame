@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tilt from 'react-tilt';
+//import Tilt from 'react-tilt';
 
 import Flip from 'react-reveal/Flip';
 // import RubberBand from 'react-reveal/RubberBand';
+import Swing from 'react-reveal/Swing';
 import Pulse from 'react-reveal/Pulse';
 
-// import Tada from 'react-reveal/Tada';
-// import Spin from 'react-reveal/Spin';
+//import Flash from 'react-reveal/Flash';
+import Jello from 'react-reveal/Jello';
+//import HeadShake from 'react-reveal/HeadShake';
 
-import Reveal from 'react-reveal/Reveal';
+
 
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -25,6 +27,7 @@ import bgImg from './images/logo.jpg';
 
 import './index.css';
 import CardComponent from "./CardComponent";
+//import { colors } from '@material-ui/core';
 // import { colors } from '@material-ui/core';
 
 const cardStyle = {
@@ -32,46 +35,66 @@ const cardStyle = {
   boxShadow: '2px 2px 10px grey'
 };
 
+const rating = {
+  color: '#fc6100'
+};
+
 const staticContent = [
   {
     id: 1,
     pairId: 1,
-    text: 'How many legs does a spider have?'
+    text: 'How many legs does a spider have?',
+    isQuestion: true,
+    color: 'red'
   },
   {
     id: 2,
     pairId: 1,
-    text: 'Eight'
+    text: 'Eight',
+    isQuestion: false,
+    color: 'red'
   },
   {
     id: 3,
     pairId: 2,
-    text: 'What is the color of an emerald?'
+    text: 'What is the color of an emerald?',
+    isQuestion: true,
+    color: 'blue'
   },
   {
     id: 4,
     pairId: 2,
-    text: 'Green'
+    text: 'Green',
+    isQuestion: false,
+    color: 'blue'
   },
   {
     id: 5,
     pairId: 3,
-    text: 'What’s the name of a place you go to see lots of animals?'
+    text: 'What’s the name of a place you go to see lots of animals?',
+    isQuestion: true,
+    color: 'green'
   },
   {
     id: 6,
     pairId: 3,
-    text: 'The zoo'
+    text: 'The zoo',
+    isQuestion: false,
+    color: 'green'
   },
   {
     id: 7,
     pairId: 4,
-    text: 'Q4'
+    text: 'Q4',
+    isQuestion: true,
+    color: 'gray'
   },
   {
     id: 8,
     pairId: 4,
-    text: 'A4'
+    text: 'A4',
+    isQuestion: false,
+    color: 'gray'
   }
 ];
 
@@ -115,49 +138,49 @@ class MemoryGame extends React.Component {
 
     console.log(newTimer);
 
-    if (newMoves > 0 && newMoves < 4 ){
-      if((newTimer > 0 && newTimer < 20))
+    if (newMoves > 0 && newMoves < 6 ){
+      if((newTimer > 0 && newTimer < 25))
       {
         console.log("5 star")
         newStarRating = 5;
       }
-      else if((newTimer > 20 && newTimer < 30))
+      else if((newTimer > 25 && newTimer < 35))
       {
         console.log("4 star")
         newStarRating = 4;
       }
-      else if((newTimer > 30 && newTimer < 40))
+      else if((newTimer > 35 && newTimer < 45))
       {
         console.log("3 star")
         newStarRating = 3;
       }
-      else if((newTimer > 40 && newTimer < 50))
+      else if((newTimer > 45 && newTimer < 55))
       {
         console.log("2 star")
         newStarRating = 2;
       }
       else 
       {
-        console.log("2 star")
+        console.log("1 star")
         newStarRating = 1;
       }
       
     }
-    else if ((newMoves > 4 && newMoves < 6)){
-      if((newTimer > 0 && newTimer < 30))
+    else if ((newMoves > 6 && newMoves < 8)){
+      if((newTimer > 0 && newTimer < 35))
       {
         console.log("4 star")
         newStarRating = 4;
       }
-      else if((newTimer > 30 && newTimer < 40))
+      else if((newTimer > 35 && newTimer < 45))
       {
         console.log("3 star")
         newStarRating = 3;
       }
-      else if((newTimer > 40 && newTimer < 50))
+      else if((newTimer > 45 && newTimer < 55))
       {
-        console.log("3 star")
-        newStarRating = 3;
+        console.log("2 star")
+        newStarRating = 2;
       }
       else 
       {
@@ -165,13 +188,13 @@ class MemoryGame extends React.Component {
         newStarRating = 1;
       }
     }
-    else if ((newMoves > 6 && newMoves < 8)){
-      if((newTimer > 0 && newTimer < 40))
+    else if ((newMoves > 8 && newMoves < 10)){
+      if((newTimer > 0 && newTimer < 45))
       {
         console.log("3 star")
         newStarRating = 3;
       }
-      else if((newTimer > 40 && newTimer < 50))
+      else if((newTimer > 45 && newTimer < 55))
       {
         console.log("2 star")
         newStarRating = 2;
@@ -182,8 +205,8 @@ class MemoryGame extends React.Component {
         newStarRating = 1;
       }
      }
-     else if ((newMoves > 8 && newMoves < 10 )){
-      if((newTimer > 0 && newTimer < 50))
+     else if ((newMoves > 10 && newMoves < 12 )){
+      if((newTimer > 0 && newTimer < 55))
       {
         console.log("2 star")
         newStarRating = 2;
@@ -194,7 +217,7 @@ class MemoryGame extends React.Component {
         newStarRating = 1;
       }
     }
-    else if(newMoves > 10){
+    else if(newMoves > 12){
        newStarRating = 1;
      }
     
@@ -323,10 +346,11 @@ class MemoryGame extends React.Component {
     return(
       <Container maxWidth="lg">
         <Grid container direction="column" justify="flex-start" alignItems="center">
-          <Grid item xs={9} container className="gameStats" alignItems="stretch" style={{height: this.state.screenHeight/6}}>
-              <Grid item xs={3}><span className="title">Memory Game</span></Grid>
+          <Grid item xs={9} container className="gameStats" alignItems="stretch" style={{height: this.state.screenHeight}}>
+              <Grid item xs={3}><span className="title">Memory-Spiel</span></Grid>
               <Grid item xs={3}>
                 <Rating
+                style={rating}
                 size="large"
                 name="customized-empty"
                 defaultValue={5}
@@ -338,10 +362,10 @@ class MemoryGame extends React.Component {
 
                 />
         </Grid>
-              <Grid item xs={3}>{this.state.timer}<span className="stat"> Seconds</span></Grid>
-              <Grid item xs={3}>{this.state.moves}<span className="stat"> Moves</span></Grid>
+              <Grid item xs={3} className="stat">{this.state.timer}<span className="stat"> Seconds</span></Grid>
+              <Grid item xs={3} className="stat">{this.state.moves}<span className="stat"> Moves</span></Grid>
           </Grid>
-          <Grid item container spacing={2} style={{height: this.state.screenHeight/6*4}}>
+          <Grid item container className="gameTiles" spacing={2} style={{height: this.state.screenHeight/6*4}}>
               { this.state.memoryCards.map((card) => {
                 return <MemoryCard key={card.id} card={card} onClick={(id) => this.handleClick(id)} />
               }) }
@@ -356,9 +380,9 @@ class MemoryGame extends React.Component {
 function MemoryCard(props) {
   return(
     <Grid item xs={4} sm={4} md={4} xl={4}>
-        <Tilt className="Tilt" options={{ max: 25, scale: 1.1 }}>
+        <Jello className="Tilt">
           <Flip right spy={props.card.faceDown}>
-          <Pulse spy={props.card.solved}>
+          <Swing spy={props.card.solved}>
               <Card style={cardStyle} className="memoryCard">
                 {/*<CardMedia */}
                 {/*  image={ props.card.faceDown ? bgImg : memoryImages[props.card.pairId] }*/}
@@ -366,7 +390,9 @@ function MemoryCard(props) {
                 {/*  onClick={props.card.solved || !props.card.faceDown ? null : () => props.onClick(props.card.id)}            */}
                 {/*  />*/}
                 <CardComponent
+                  color= {props.card.color}
                   className="memoryImg"
+                  question = {props.card.isQuestion}
                   text={props.card.faceDown ? 
                   <CardMedia 
                   image={bgImg}
@@ -376,9 +402,9 @@ function MemoryCard(props) {
                   handleClick={props.card.solved || !props.card.faceDown ? null : () => props.onClick(props.card.id)}
               />
               </Card>
-            </Pulse>
+            </Swing>
           </Flip>
-        </Tilt>
+        </Jello>
     </Grid>
   );
 }
@@ -389,7 +415,7 @@ function GameOverScreen(props) {
       <Container maxWidth="lg">
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid item xs={8} sm={6}>
-            <Reveal>
+            <Pulse>
               <Card style={cardStyle} className="message">
                 <CardContent>
                   <Grid container alignItems="center" justify="center">
@@ -409,16 +435,16 @@ function GameOverScreen(props) {
                             />
                     </Grid>
                     <Grid item xs={10}>
-                      <Tilt className="Tilt" options={{ max: 30, scale: 1.1 }}>
+                      {/* <HeadShake > */}
                         <Card style={cardStyle} className="restartBtn title" onClick={props.onClick}>
                           Play Again?
-                        </Card>
-                      </Tilt>
+                          </Card>
+                        {/* </HeadShake> */}
                     </Grid>
                   </Grid>
                 </CardContent>
               </Card>
-            </Reveal>
+            </Pulse>
           </Grid>
         </Grid>
       </Container>

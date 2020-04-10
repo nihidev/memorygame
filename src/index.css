@@ -19,6 +19,10 @@ body {
   /* background: rgba(40,185,216, 1); */
 }
 
+.gameTiles{
+  justify-content: center;
+}
+
 .gameStats {
   text-align: center;
   color: var(--priColor) !important;
@@ -33,12 +37,15 @@ body {
 }
 
 .title {
-  font-size: 25px;
-  color: var(--priColor) !important;
+  font-size: 24px;
+  font-family: Helvetica;
+  color: #fc6100;
 }
 
 .stat {
-  font-size: 25px;
+  font-size: 24px;
+  font-family: Helvetica;
+  color:#fc6100;
   vertical-align: middle;
 }
 
@@ -54,6 +61,10 @@ body {
   .stat {
     font-size: 24pt;
   }
+}
+
+.gameTiles{
+  justify-content: center;
 }
 
 .memoryCard {
@@ -89,9 +100,14 @@ body {
   align-items: center;
 }
 
+
+.gameTiles{
+  justify-content: center;
+}
+
 .gameOver {
   width: 100%;
-  height: 100%;
+  height: 105%;
   position: absolute;
   z-index: 1;
   top: 0;
