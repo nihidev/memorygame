@@ -28,7 +28,7 @@ body {
   color: var(--priColor) !important;
   text-transform: lowercase;
   font-size: 4vw;
-  cursor: default; 
+  cursor: default;
   height: 15vh;
   line-height: 15vh;
   margin-top: 2rem;
@@ -67,6 +67,10 @@ body {
   justify-content: center;
 }
 
+.hide-card {
+  visibility: hidden;
+}
+
 .memoryCard {
   height: 100%;
   width: 100%;
@@ -80,7 +84,7 @@ body {
     width: 100%;
     padding-top: 20vh;
     position: relative;
-  }  
+  }
 }
 
 .memoryImg {
