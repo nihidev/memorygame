@@ -7,7 +7,7 @@ import Flip from 'react-reveal/Flip';
 import Swing from 'react-reveal/Swing';
 import Pulse from 'react-reveal/Pulse';
 
-//import Flash from 'react-reveal/Flash';
+import Flash from 'react-reveal/Flash';
 import Jello from 'react-reveal/Jello';
 //import HeadShake from 'react-reveal/HeadShake';
 
@@ -344,6 +344,8 @@ class MemoryGame extends React.Component {
 
   componentDidMount() {
     window.addEventListener("resize", this.handleResize);
+
+    console.log(this.state.screenHeight);
   }
 
   componentWillUnmount() {
@@ -391,7 +393,7 @@ class MemoryGame extends React.Component {
           <Grid item xs={9} sm={9} md={9} xl={9} container className="gameStats" alignItems="stretch"
                 style={{height: this.state.screenHeight}}>
             {/* <Grid item xs={3}><span className="title">Hello Dev</span></Grid> */}
-            <Grid item xs={4} sm={4} md={4} xl={4} spacing={2} justify="space-evenly">
+            <Grid item xs={12} sm={12} md={4} xl={4} spacing={2} justify="space-evenly">
               <Rating
                 style={rating}
                 size="large"
@@ -404,19 +406,18 @@ class MemoryGame extends React.Component {
                 value={this.state.starRating}
               />
             </Grid>
-            <Grid item xs={4} sm={4} md={4} xl={4} className="stat" spacing={2}>{this.state.timer}<span
+            <Grid item xs={6} sm={6} md={4} xl={4} className="stat" spacing={2}>{this.state.timer}<span
               className="stat"> Seconds</span></Grid>
-            <Grid item xs={4} sm={4} md={4} xl={4} className="stat" spacing={2}>{this.state.moves}<span
+            <Grid item xs={6} sm={6} md={4} xl={4} className="stat" spacing={2}>{this.state.moves}<span
               className="stat"> Moves</span></Grid>
           </Grid>
-          <Grid item container className="gameTiles" spacing={2} style={{height: this.state.screenHeight / 6 * 4}}>
+          <Grid item container className="gameTiles" spacing={2} style={{height: this.state.screenHeight/3}}>
             {this.state.memoryCards.map((card) => {
               return <MemoryCard key={card.id}  card={card} onClick={(id) => this.handleClick(id)}/>
             })}
           </Grid>
         </Grid>
-        {this.state.won ? <GameOverScreen onClick={this.restartGame} time={this.state.timer} moves={this.state.moves}
-                                          starRating={this.state.starRating}/> : null}
+        {this.state.won ? <GameOverScreen onClick={this.restartGame} time={this.state.timer} moves={this.state.moves} starRating={this.state.starRating}/> : null}
       </Container>
     );
   }
@@ -468,8 +469,9 @@ function GameOverScreen(props) {
                     <Grid item xs={12} className="title">You Win</Grid>
                     <Grid item xs={6} className="title">{props.time} <span className="stat"> seconds</span></Grid>
                     <Grid item xs={6} className="title">{props.moves} <span className="stat"> moves</span></Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={6}  alignItems="center" >
                       <Rating
+                       className="ratingStyle"
                         size="large"
                         name="customized-empty"
                         defaultValue={5}
@@ -500,7 +502,7 @@ function GameOverScreen(props) {
 
 function GameRuleScreen(props) {
   return (
-    <div className="gameOver">
+    <div className="gameRules">
       <Container maxWidth="lg">
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid item xs={8} sm={6}>
@@ -508,14 +510,14 @@ function GameRuleScreen(props) {
               <Card style={cardStyle} className="message">
                 <CardContent>
                   <Grid container alignItems="center" justify="center">
-                    <Grid item xs={12} className="title">All Question's are Red in Color and Answers are Blue in color!
-                      All the Best !!! </Grid>
+                    <Grid item xs={12} className="rules"> All Question's are <span style={{color:'red'}} > Red </span> in Color <br/> Answers are <span style={{color:'Green'}} > Green </span> in color! <br/>
+                      All the Best !!! <br/><br/></Grid>
                     <Grid item xs={10}>
-                      {/* <HeadShake > */}
+                      <Flash>
                       <Card style={cardStyle} className="restartBtn title" onClick={props.onClick}>
                         Play Game
                       </Card>
-                      {/* </HeadShake> */}
+                      </Flash>
                     </Grid>
                   </Grid>
                 </CardContent>

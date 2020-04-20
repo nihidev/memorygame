@@ -42,6 +42,12 @@ body {
   color: #fc6100;
 }
 
+.rules{
+  font-size: 24px;
+  font-family: Helvetica;
+  color: #000000d2;
+}
+
 .stat {
   font-size: 24px;
   font-family: Helvetica;
@@ -67,9 +73,29 @@ body {
   justify-content: center;
 }
 
-.hide-card {
-  visibility: hidden;
+/* #container {
+  overflow:hidden;
+  position:relative;
+} */
+
+.hide-card{
+  -webkit-animation: cssAnimation 2s forwards; 
+  animation: cssAnimation 2s forwards;
 }
+@keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+/* .hide-card {
+  visibility: hidden;
+} */
 
 .memoryCard {
   height: 100%;
@@ -110,6 +136,34 @@ body {
 }
 
 .gameOver {
+  animation: 2s fadeIn;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  width: 100%;
+  height: 105%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255, 0.7);
+  transition: opacity 2s;
+  -webkit-transition: opacity 2s;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+.gameRules{
   width: 100%;
   height: 105%;
   position: absolute;
@@ -140,4 +194,23 @@ body {
   color: white !important;
   padding: 2px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+.gameStats {
+  line-height: 4vh;
+}
+
+.stat {
+  font-size: 14px;
+}
+
+.memoryImg{
+  font-size: 12px;
+}
+
+.ratingStyle{
+  margin-left: -27px;
+}
+
 }
